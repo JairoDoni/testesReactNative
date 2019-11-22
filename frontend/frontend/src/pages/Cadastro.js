@@ -3,13 +3,21 @@ import {StyleSheet,View, Text,TextInput,TouchableOpacity, Image } from "react-na
 
 // import logo from './assets/img/logo.png';
 
-export default function Login(){
+export default function Cadastro(){
   return (
     <View style={styles.container}>
     {/* <Image source={logo} /> */}
-       <Text style={styles.logo} >UNIFAE</Text>
+
 
        <View style={styles.form}>
+
+        <Text style={styles.label} >Nome:</Text>
+        <TextInput
+         autoCapitalize="none"
+         placeholder="Digite seu email aqui!"
+         style={styles.input} 
+         placeholderColor='#999'
+         />
 
         <Text style={styles.label} >Email:</Text>
         <TextInput
@@ -19,22 +27,47 @@ export default function Login(){
          placeholderColor='#999'
          />
 
+        <Text style={styles.label} >Idade:</Text>
+        <TextInput
+        placeholder="Digite sua senha aqui!"
+        style={styles.input}  
+        placeholderColor='#999'
+        />
+
         <Text style={styles.label} >Senha:</Text>
         <TextInput
         placeholder="Digite sua senha aqui!"
         style={styles.input}  
         placeholderColor='#999'
         />
-       
+
+        <Text style={styles.label} >Telefone:</Text>
+        <TextInput
+        placeholder="Digite sua senha aqui!"
+        style={styles.input}  
+        placeholderColor='#999'
+        />
+        <Text style={styles.label} >Cidade:</Text>
+        <TextInput
+        placeholder="Digite sua senha aqui!"
+        style={styles.input}  
+        placeholderColor='#999'
+        />
+        <Text style={styles.label} >Escola:</Text>
+        <TextInput
+        placeholder="Digite sua senha aqui!"
+        style={styles.input}  
+        placeholderColor='#999'
+        />
 
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Entrar</Text>
+          <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
 
        </View>
        <View style={styles.criarConta}>
-        <Text style={styles.criarConta1} >Ainda não tem conta? </Text>
-        <Text style={styles.criarConta2} >Criar conta</Text>
+        <Text style={styles.criarConta1} >Ja tem conta? </Text>
+        <Text style={styles.criarConta2} >Login</Text>
        </View>
   </View>
   );
