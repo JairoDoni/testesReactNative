@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, AsyncStorage, Text, TextInput,TouchableOpacity, Image } from "react-native";
 
-import logo from './assets/img/LOGO.png';
+import logo from './assets/img/logo.png';
 
 
 
@@ -29,7 +29,6 @@ export default function Login({ navigation }){
          style={styles.input} 
          placeholderTextColor='#CCCDCD'
          keyboardType="email-address"
-         
          />
 
         {/* <Text style={styles.label} >Senha:</Text> */}

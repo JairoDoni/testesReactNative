@@ -6,8 +6,8 @@ import Main from './pages/Main';
 
 const Routes = createAppContainer(
     createSwitchNavigator({
-        Cadastro,
         Login,
+        Cadastro,
         Main,
     })
 );
