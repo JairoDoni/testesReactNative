@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
-import {StyleSheet,View, Text,TextInput,TouchableOpacity, Image } from "react-native";
+import React from 'react';
+import { StyleSheet, View, AsyncStorage, Text, TextInput,TouchableOpacity, Image } from "react-native";
 
 import logo from './assets/img/LOGO.png';
 
 
-class Input extends Component {
-  render() {
-    return (
-      <View>
-      <TextInput autoCapitalize="none" 
-      placeholder={this.props.type} 
-      style={styles.input} 
-      placeholderTextColor='#CCCDCD'/>
-      </View>
-    );
+
+export default function Login({ navigation }){
+  
+  async function handleSubmitLogin(){
+    navigation.navigate('Main')
   }
-}
-export default function Login(){
+  async function handleSubmitCadastrar(){
+    navigation.navigate('Cadastro')
+  }
+  
   return (
     <View style={styles.container}>
     <Text style={styles.parteLogo} >      Feira de profições        </Text>
@@ -26,20 +23,33 @@ export default function Login(){
        <View style={styles.form}>
 
         {/* <Text style={styles.label} >Email:</Text> */}
-        <Input type="Email"/>
+        <TextInput
+         autoCapitalize="none" 
+         placeholder="Email" 
+         style={styles.input} 
+         placeholderTextColor='#CCCDCD'
+         keyboardType="email-address"
+         
+         />
 
         {/* <Text style={styles.label} >Senha:</Text> */}
-        <Input type="Senha"/>
+        <TextInput
+         autoCapitalize="none" 
+         placeholder="Senha" 
+         style={styles.input} 
+         placeholderTextColor='#CCCDCD'
+         secureTextEntry
+         />
        
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={handleSubmitLogin} style={styles.button}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
        </View>
        <View style={styles.criarConta}>
         <Text style={styles.criarConta1} >Ainda não tem conta? </Text>
-        <Text style={styles.criarConta2} >Criar conta</Text>
+        <Text onPress={handleSubmitCadastrar} style={styles.criarConta2} >Criar conta</Text>
        </View>
   </View>
   );
@@ -85,6 +95,7 @@ const styles = StyleSheet.create({
     height:50,
     alignSelf:'stretch',
     // backgroundColor:'#FFF',
+    color:"#f9f9f9",
     borderBottomWidth:1,
     borderColor:'#999999',
     marginTop:10,

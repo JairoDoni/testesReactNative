@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet,View, Text,TextInput,TouchableOpacity, ScrollView, Image } from "react-native";
+import {StyleSheet, AsyncStorage ,View, Text, TextInput, TouchableOpacity, ScrollView, Image } from "react-native";
 
 import arrow from './assets/icons/left-arrow2.1.png';
 // import arrow from './assets/icons/arrow-left-solid.svg';
@@ -12,21 +12,29 @@ class Input extends Component {
         autoCapitalize="none"
         placeholder={this.props.type}
         style={styles.input} 
-        placeholderTextColor='#CCCDCD'
+        placeholderTextColor='#f9f9f9'
         />
       </View>
     );
   }
 }
 
-export default function Cadastro(){
+export default function Cadastro({ navigation }){
+  
+  async function handleSubmitCadastrar(){
+    navigation.navigate('Login')
+  }
+  async function handleSubmitLogin(){
+    navigation.navigate('Login')
+  }
+
   return (
     <ScrollView style={styles.scroll}>
       
       <View style={styles.barra}>
 
         
-            <TouchableOpacity style={styles.back}>
+            <TouchableOpacity onPress={handleSubmitLogin}  style={styles.back}>
               <Image source={arrow} />
             </TouchableOpacity>
         
@@ -48,7 +56,7 @@ export default function Cadastro(){
           <Input type="Escola"/>
           <Input type="Curso pretendido"/>
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity onPress={handleSubmitCadastrar} style={styles.button}>
             <Text style={styles.buttonText}>Cadastrar</Text>
           </TouchableOpacity>
 
@@ -56,7 +64,7 @@ export default function Cadastro(){
         
         <View style={styles.criarConta}>
           <Text style={styles.criarConta1} >Ja tem conta? </Text>
-          <Text style={styles.criarConta2} >Login</Text>
+          <Text onPress={handleSubmitLogin} style={styles.criarConta2} >Login</Text>
         </View>
     </View>
   </ScrollView>
@@ -105,8 +113,10 @@ const styles = StyleSheet.create({
     // borderColor:'blue',
   },
   input:{
+    zIndex:1,
     height:50,
     alignSelf:'stretch',
+    color:"#f9f9f9",
     borderBottomWidth:0.5,
     borderColor:'#CCCDCD',
     marginTop:10,
