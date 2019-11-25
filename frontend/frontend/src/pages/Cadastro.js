@@ -1,113 +1,114 @@
-import React from 'react';
-import {StyleSheet,View, Text,TextInput,TouchableOpacity, Image } from "react-native";
+import React, { Component } from 'react';
+import {StyleSheet,View, Text,TextInput,TouchableOpacity, ScrollView, Image } from "react-native";
 
-// import logo from './assets/img/logo.png';
+import arrow from './assets/icons/left-arrow2.1.png';
+// import arrow from './assets/icons/arrow-left-solid.svg';
+
+class Input extends Component {
+  render() {
+    return (
+      <View>
+        <TextInput
+        autoCapitalize="none"
+        placeholder={this.props.type}
+        style={styles.input} 
+        placeholderTextColor='#CCCDCD'
+        />
+      </View>
+    );
+  }
+}
 
 export default function Cadastro(){
   return (
-    <View style={styles.container}>
-    {/* <Image source={logo} /> */}
+    <ScrollView style={styles.scroll}>
+      
+      <View style={styles.barra}>
 
+        
+            <TouchableOpacity style={styles.back}>
+              <Image source={arrow} />
+            </TouchableOpacity>
+        
 
-       <View style={styles.form}>
+        <Text style={styles.textBarra}>Cadastro</Text>
 
-        <Text style={styles.label} >Nome:</Text>
-        <TextInput
-         autoCapitalize="none"
-         placeholder="Digite seu email aqui!"
-         style={styles.input} 
-         placeholderColor='#999'
-         />
+      </View>
 
-        <Text style={styles.label} >Email:</Text>
-        <TextInput
-         autoCapitalize="none"
-         placeholder="Digite seu email aqui!"
-         style={styles.input} 
-         placeholderColor='#999'
-         />
+      <View style={styles.container}>
+        
+        <View style={styles.form}>
+      
+          <Input type="Nome"/>
+          <Input type="Email"/>
+          <Input type="Senha"/>
+          <Input type="Idade"/>
+          <Input type="Telefone"/>
+          <Input type="Cidade"/>
+          <Input type="Escola"/>
+          <Input type="Curso pretendido"/>
 
-        <Text style={styles.label} >Idade:</Text>
-        <TextInput
-        placeholder="Digite sua senha aqui!"
-        style={styles.input}  
-        placeholderColor='#999'
-        />
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Cadastrar</Text>
+          </TouchableOpacity>
 
-        <Text style={styles.label} >Senha:</Text>
-        <TextInput
-        placeholder="Digite sua senha aqui!"
-        style={styles.input}  
-        placeholderColor='#999'
-        />
-
-        <Text style={styles.label} >Telefone:</Text>
-        <TextInput
-        placeholder="Digite sua senha aqui!"
-        style={styles.input}  
-        placeholderColor='#999'
-        />
-        <Text style={styles.label} >Cidade:</Text>
-        <TextInput
-        placeholder="Digite sua senha aqui!"
-        style={styles.input}  
-        placeholderColor='#999'
-        />
-        <Text style={styles.label} >Escola:</Text>
-        <TextInput
-        placeholder="Digite sua senha aqui!"
-        style={styles.input}  
-        placeholderColor='#999'
-        />
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Cadastrar</Text>
-        </TouchableOpacity>
-
-       </View>
-       <View style={styles.criarConta}>
-        <Text style={styles.criarConta1} >Ja tem conta? </Text>
-        <Text style={styles.criarConta2} >Login</Text>
-       </View>
-  </View>
+        </View>
+        
+        <View style={styles.criarConta}>
+          <Text style={styles.criarConta1} >Ja tem conta? </Text>
+          <Text style={styles.criarConta2} >Login</Text>
+        </View>
+    </View>
+  </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  scroll:{
+    backgroundColor:'#1C2122'
+  },
   container:{
     flex:1,
-    // backgroundColor:'#222154',
-    // backgroundColor:'#20305E',
-    // ********** backgroundColor:'#001426',
-      backgroundColor:'#1C2122',
-    
+    backgroundColor:'#1C2122',
     alignItems: 'center',
     justifyContent:'center',
   },
-  logo:{
-    // color:'#36509E',
-    //  color:'#273A73',
-    // ********** color:'#1C3F70',
-     color:'#89C54B',
-    //  color:'#C7C7C7',
-     //color:'#619123',
-    // textDecorationLine:'underline',
+  barra:{
+    height:70,
+    flex:1,
+    backgroundColor:'#89C54B',
+    alignItems: 'stretch',
     
-    fontFamily:'Gamer',
-    fontSize:55,
-    fontWeight:'bold',
-    textShadowOffset: {width:0, height:5},
-    textShadowRadius:30,
-    textShadowColor:'#000',
-    marginBottom:50,
+    flexDirection: 'row',
+  },
+  // icon:{
+  //   flex:2,
+  //   width:50,
+  //   alignItems: 'flex-start',
+  //   marginTop:5,
+  //   marginHorizontal:5,
+  // },
+  back:{
+    width:64,
+    height:64,
+    marginTop:5,
+    // borderWidth:1,
+    // borderColor:'blue',
+  },
+  textBarra:{
+    color:'#222222',
+    fontSize:22,
+    marginHorizontal:'25%',
+    marginTop:20,
+    
+    // borderWidth:1,
+    // borderColor:'blue',
   },
   input:{
     height:50,
     alignSelf:'stretch',
-    backgroundColor:'#FFF',
-    borderWidth:1,
-    borderColor:'#ddd',
-    borderRadius:4,
+    borderBottomWidth:0.5,
+    borderColor:'#CCCDCD',
     marginTop:10,
     paddingHorizontal: 15,
     marginHorizontal:20,
@@ -115,35 +116,32 @@ const styles = StyleSheet.create({
   form:{
     width:'100%',
     textAlign:'left',
-
   },
   label:{
     color:'#f3f3f3',
     fontSize:18,
-    // fontWeight:'bold',
     marginTop:15,
     marginHorizontal:20,
-    },
-    button:{
-      height:46,
-      alignSelf:'stretch',
-      backgroundColor:'#89C54B',
-      borderRadius:4,
-      marginTop:10,
-      justifyContent:'center',
-      alignItems:'center',
-      marginTop:20,
-      marginHorizontal:20,
-    },
-    buttonText:{
-      color:'#222222',
-      fontWeight:'bold',
-      fontSize:18
-    },
+  },
+  button:{
+    height:48,
+    alignSelf:'stretch',
+    backgroundColor:'#89C54B',
+    borderRadius:6,
+    justifyContent:'center',
+    alignItems:'center',
+    marginTop:50,
+    marginHorizontal:20,
+  },
+  buttonText:{
+    color:'#222222',
+    fontWeight:'bold',
+    fontSize:18
+  },
   criarConta:{
     flexDirection:'row',
-    marginTop:25,
-    marginBottom:-20,
+    marginTop:30,
+    marginBottom:30
   },
   criarConta1:{
     fontSize:18,
@@ -160,6 +158,4 @@ const styles = StyleSheet.create({
   textShadowRadius:30,
   textShadowColor:'#000',
   },
-
-  
 });

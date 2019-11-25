@@ -1,12 +1,14 @@
-import {createAppContainer, createSwichNavigator } from 'react-navigation'
+import {createAppContainer, createSwichNavigator } from 'react-navigation';
 
 import Login from './pages/Login';
-import Login from './pages/Main';
+import Cadastro from './pages/Cadastro';
+import Main from './pages/Main';
 
 const Routes = createAppContainer(
     createSwichNavigator({
         Login,
-        Main
+        Cadastro,
+        Main,
     })
 );
-export default Routes;
+ export default Routes;

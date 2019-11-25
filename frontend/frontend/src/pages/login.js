@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {StyleSheet,View, Text,TextInput,TouchableOpacity, Image } from "react-native";
 
-// import logo from './assets/img/logo.png';
+import logo from './assets/img/LOGO.png';
 
+
+class Input extends Component {
+  render() {
+    return (
+      <View>
+      <TextInput autoCapitalize="none" 
+      placeholder={this.props.type} 
+      style={styles.input} 
+      placeholderTextColor='#CCCDCD'/>
+      </View>
+    );
+  }
+}
 export default function Login(){
   return (
     <View style={styles.container}>
-    {/* <Image source={logo} /> */}
-       <Text style={styles.logo} >UNIFAE</Text>
+    <Text style={styles.parteLogo} >      Feira de profições        </Text>
+    <Image style={styles.imgLogo} source={logo} />
+       {/* <Text style={styles.logo} >UNIFAE</Text> */}
 
        <View style={styles.form}>
 
-        <Text style={styles.label} >Email:</Text>
-        <TextInput
-         autoCapitalize="none"
-         placeholder="Digite seu email aqui!"
-         style={styles.input} 
-         placeholderColor='#999'
-         />
+        {/* <Text style={styles.label} >Email:</Text> */}
+        <Input type="Email"/>
 
-        <Text style={styles.label} >Senha:</Text>
-        <TextInput
-        placeholder="Digite sua senha aqui!"
-        style={styles.input}  
-        placeholderColor='#999'
-        />
+        {/* <Text style={styles.label} >Senha:</Text> */}
+        <Input type="Senha"/>
        
 
         <TouchableOpacity style={styles.button}>
@@ -51,6 +56,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent:'center',
   },
+  parteLogo:{
+    fontSize:24,
+    color:'#f3f3f3',
+  },
+  imgLogo:{
+    marginBottom:70,
+  },
   logo:{
     // color:'#36509E',
     //  color:'#273A73',
@@ -64,6 +76,7 @@ const styles = StyleSheet.create({
     fontSize:55,
     fontWeight:'bold',
     textShadowOffset: {width:0, height:5},
+    
     textShadowRadius:30,
     textShadowColor:'#000',
     marginBottom:50,
@@ -71,10 +84,9 @@ const styles = StyleSheet.create({
   input:{
     height:50,
     alignSelf:'stretch',
-    backgroundColor:'#FFF',
-    borderWidth:1,
-    borderColor:'#ddd',
-    borderRadius:4,
+    // backgroundColor:'#FFF',
+    borderBottomWidth:1,
+    borderColor:'#999999',
     marginTop:10,
     paddingHorizontal: 15,
     marginHorizontal:20,
@@ -82,7 +94,6 @@ const styles = StyleSheet.create({
   form:{
     width:'100%',
     textAlign:'left',
-
   },
   label:{
     color:'#f3f3f3',
@@ -92,14 +103,14 @@ const styles = StyleSheet.create({
     marginHorizontal:20,
     },
     button:{
-      height:46,
+      height:48,
       alignSelf:'stretch',
       backgroundColor:'#89C54B',
-      borderRadius:4,
-      marginTop:10,
+      borderRadius:6,
+      
       justifyContent:'center',
       alignItems:'center',
-      marginTop:20,
+      marginTop:50,
       marginHorizontal:20,
     },
     buttonText:{
@@ -109,7 +120,7 @@ const styles = StyleSheet.create({
     },
   criarConta:{
     flexDirection:'row',
-    marginTop:25,
+    marginTop:35,
     marginBottom:-20,
   },
   criarConta1:{

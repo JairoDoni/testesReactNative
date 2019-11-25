@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "react": "16.9.0",
-    "react-native": "0.61.4"
+    "react-native": "0.61.4",
+    "react-native-gesture-handler": "^1.5.1",
+    "react-native-navigation": "^3.7.0",
+    "react-native-reanimated": "^1.4.0",
+    "react-navigation": "^4.0.10"
   },
   "devDependencies": {
     "@babel/core": "7.7.2",
@@ -19,6 +23,7 @@
     "@react-native-community/eslint-config": "0.0.5",
     "babel-jest": "24.9.0",
     "eslint": "6.6.0",
+    "install-peers": "^1.0.3",
     "jest": "24.9.0",
     "metro-react-native-babel-preset": "0.56.3",
     "react-test-renderer": "16.9.0"
@@ -27,7 +32,8 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets":
-    ["./assets/fonts/"]
+    "assets": [
+      "./assets/fonts/"
+    ]
   }
 }
