@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Node with MySQL",
-  "main": "./src/server.js",
+  "main": "./src/routes.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "curl": "^0.1.4",
     "express": "^4.17.1",
     "mysql": "^2.17.1",
     "nodejs": "0.0.0",
