@@ -1,84 +1,72 @@
+
 const express = require('express');
+const UserController = require('./controllers/CreateUserController') 
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
+const app = express();         
 
 
-// Create connection
-const db = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '',
-    database : 'react'
-});
-// Connect
-db.connect((err) => {
-    if(err){
-        throw err;
-    }
-    console.log('MySql Connected...');
-});
+//configurando o body parser para pegar POSTS mais tarde
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-const routes = express.Routes();
 
-// Add post 
-routes.get('/add1', (req, res) => {
-    let post = {title:'Post One', body:'This is post number one'};
-    let sql = 'INSERT INTO posts SET ?';
-    let query = db.query(sql, post, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send('Post 1 added...');
+//definindo as rotas
+const routes = express.Router();
+
+//PARA TESTES
+routes.get('/', UserController.store);
+app.use('/', routes);
+routes.get('/clientes', (req, res) =>{
+    execSQLQuery('SELECT * FROM Clientes', res);
+})
+//LISTAR USUARIOS
+routes.get('/clientes', (req, res) =>{
+    execSQLQuery('SELECT * FROM Clientes', res);
+})
+//CONSULTA POR ID
+routes.get('/clientes/:id?', (req, res) =>{
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM Clientes' + filter, res);
+})
+
+//EDITAR CADASTRO
+routes.patch('/clientes/:id', (req, res) =>{
+    const id = parseInt(req.params.id);
+    const nome = req.body.nome.substring(0,150);
+    const cpf = req.body.cpf.substring(0,11);
+    execSQLQuery(`UPDATE Clientes SET Nome='${nome}', CPF='${cpf}' WHERE ID=${id}`, res);
+})
+//CONEXÃO COM O BANCO
+  function execSQLQuery(sqlQry, res){
+    const connection = mysql.createConnection({
+      host     : 'localhost',
+      port     : 3307,
+      user     : 'root',
+      password : '',
+      database : 'react'
     });
-});
-// Add post 
-routes.get('/add2', (req, res) => {
-    let post = {title:'Post Two', body:'This is post number two'};
-    let sql = 'INSERT INTO posts SET ?';
-    let query = db.query(sql, post, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send('Post 2 added...');
-    });
-});
 
-// Select posts
-routes.get('/getposts', (req, res) => {
-    let sql = 'SELECT * FROM posts';
-    let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send('Posts fetched...');
-    });
-});
-
-// Select single post
-routes.get('/getpost/:id', (req, res) => {
-    let sql = `SELECT * FROM posts WHERE id = ${req.params.id}`;
-    let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send('Post fetched...');
-    });
-});
-
-// Update post (colocar o id depois da barra para escolher)
-routes.get('/updatepost/:id', (req, res) => {
-    let newTitle = 'Updated Title';
-    let sql = `UPDATE posts SET title = '${newTitle}' WHERE id = ${req.params.id}`;
-    let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send('Post updated...');
-    });
-});
-//Delete post
-routes.get('/deletepost/:id', (req, res) => {
-    let newTitle = 'Updated Title';
-    let sql = `DELETE FROM postS WHERE id = ${req.params.id}`;
-    let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send('Post deleted...');
-    });
-});
+  connection.query(sqlQry, function(error, results, fields){
+    if(error) 
+      res.json(error);
+    else
+      res.json(results);
+    connection.end();
+    console.log('executou!');
+  });
+}
 
 module.exports = routes;
+
+
+
+
+
+
+
+
+
+
+
