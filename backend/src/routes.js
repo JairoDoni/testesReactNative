@@ -23,15 +23,15 @@ routes.get('/', testeConexao.store);
 server.use('/', routes);
 
 //LISTAR USUARIOS
-routes.get('/clientes', ListUsers.store)
+routes.get('/user', ListUsers.store)
 //CONSULTA POR ID
-routes.get('/clientes/:id?', FilterId.store)
+routes.get('/user/:id?', FilterId.store)
 //CRIAR USUARIO
-routes.post('/clientes', UserRegistration.store)
+routes.post('/user', UserRegistration.store)
 //EDITAR CADASTRO
-routes.patch('/clientes/:id', EditUser.store)
+routes.patch('/user/:id', EditUser.store)
 //DELETAR USUARIO
-routes.delete('/clientes/:id', DeleteUser.store)
+routes.delete('/user/:id', DeleteUser.store)
 
 //INICIAR SERVIDOR
 server.listen(port);
