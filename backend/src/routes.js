@@ -6,10 +6,14 @@ const FilterId = require('./controllers/FilterId')
 const DeleteUser = require('./controllers/DeleteUser') 
 const UserRegistration = require('./controllers/UserRegistration') 
 const EditUser = require('./controllers/EditUser') 
-
+const bodyParser = require('body-parser');
 
 const server = express();
 const port = 3000;
+
+//configurando o body parser para pegar POSTS mais tarde
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
 
 //definindo as rotas
 const routes = express.Router();

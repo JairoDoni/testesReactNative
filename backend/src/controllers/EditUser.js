@@ -1,7 +1,7 @@
 const execSQLQuery = require('../connBanco') 
 
 module.exports = {
-    store(req, res) {
+    async store(req, res) {
         const id = parseInt(req.params.id);
         const nome = req.body.nome.substring(0,150);
         const cpf = req.body.cpf.substring(0,11);
