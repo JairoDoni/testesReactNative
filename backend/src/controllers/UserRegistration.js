@@ -1,9 +1,15 @@
 const execSQLQuery = require('../connBanco') 
 
 module.exports = {
-    store(req, res) {
+    async store(req, res) {
         const nome = req.body.nome.substring(0,150);
-        const cpf = req.body.cpf.substring(0,11);
-        execSQLQuery(`INSERT INTO Clientes(Nome, CPF) VALUES('${nome}','${cpf}')`, res);
+        const email = req.body.email.substring(0,150);
+        const senha = req.body.senha.substring(0,150);
+        const idade = req.body.idade.substring(0,11);
+        const telefone = req.body.telefone.substring(0,150);
+        const cidade = req.body.cidade.substring(0,150);
+        const escola = req.body.escola.substring(0,150);
+        const cursoPret = req.body.cursoPret.substring(0,150);
+        execSQLQuery(`INSERT INTO user(Nome, email, senha, idade, telefone, cidade, escola, cursoPret) VALUES('${nome}','${email}','${senha}','${idade}','${telefone}','${cidade}','${escola}','${cursoPret}')`, res);
     }
 }

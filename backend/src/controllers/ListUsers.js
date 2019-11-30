@@ -1,7 +1,7 @@
 const execSQLQuery = require('../connBanco') 
 
 module.exports = {
-    store(req, res) {
-        execSQLQuery('SELECT * FROM Clientes', res);
+    async store(req, res) {
+        execSQLQuery('SELECT * FROM user', res);
     }
 }
